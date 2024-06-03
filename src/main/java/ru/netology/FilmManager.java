@@ -1,62 +1,60 @@
 package ru.netology;
 
 public class FilmManager {
-    private FilmRepository repo;
-
-    private Films films = new Films();
-
-    public void add(Films film) {
-        repo.save(film);
-    }
-
+    private Films[] films = new Films[0];
     private int limit = 5;
 
     public FilmManager() {
     }
+
     public FilmManager(int limit) {
         this.limit = limit;
 
     }
 
-    public Films[] findlast() {
-        int resultLenght;
-        Films[] all = repo.getFilms();
-        FilmManager repo = new FilmManager();
-        Films[] tmp = new Films[all.length];
-        for (int i = 0; i < tmp.length; i++) {
-            tmp[i] = all[all.length -1 -i];
+    public void save(Films film) {
+        Films[] tmp = new Films[films.length + 1];
+        for (int i = 0; i < films.length; i++) {
+            tmp[i] = films[i];
         }
-        if (all.length < limit) {
-            resultLenght = all.length;
-        } else {
-            resultLenght = limit;
-            System.out.println(tmp[5]);
-        }
-        return tmp;
+        tmp[tmp.length - 1] = film;
+        films = tmp;
     }
 
-    public Films[] getReversedFilms() {
-        Films[] all = repo.getFilms();
-        Films[] reversed = new Films[all.length];
-        for (int i = 0; i < reversed.length; i++) {
-            reversed[i] = all[all.length - 1 -i];
-            }
-        return reversed;
+    public Films[] showAllNorm() {
+        int length = limit;
+        Films[] result = new Films[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = films[i];
+        }
+        return result;
+    }
+
+    public Films[] showAllBack() {
+        int length = limit;
+        Films[] result = new Films[length];
+        for (int i = 0; i < length; i++) {
+            int index = films.length - i - 1;
+            result[i] = films[index];
+        }
+        return result;
     }
 
     public Films[] showAll() {
-        Films[] all = repo.getFilms();
         int length = limit;
-        if (length > all.length) {
-            length = all.length;
+        if (length >= films.length) {
+            length = films.length;
         }
-        if (limit <= 0) {
-            length = all.length;
+        if (length < films.length && length > 0) {
+            length = films.length;
+        }
+        if (length < 0) {
+            return new Films[0];
         }
         Films[] result = new Films[length];
-        for (int i = 0; i < length; i++) {
-            int index = all.length - i - 1;
-            result[i] = Films[index];
+        for (int i = 0; i < films.length; i++) {
+            int index = films.length - i - 1;
+            result[i] = films[index];
         }
         return result;
     }
