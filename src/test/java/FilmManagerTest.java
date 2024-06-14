@@ -43,8 +43,8 @@ public class FilmManagerTest {
     @DisplayName("Отображаю все фильмы по убыванию id")
     public void showAllSavedFilmsBack() {
         Films[] expected = {eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second};
-        Films[] actual = manager.showAllBack();
-        System.out.println(Arrays.toString(manager.showAllBack()));
+        Films[] actual = manager.findLast();
+        System.out.println(Arrays.toString(manager.findLast()));
         Assertions.assertArrayEquals(expected, actual);
     }
 
@@ -76,25 +76,25 @@ public class FilmManagerTest {
         manager.save(eighth);
         manager.save(ninth);
         Films[] expected = {ninth, eighth, seventh, sixth, fifth};
-        Films[] actual = manager.showAll();
-        System.out.println(Arrays.toString(manager.showAll()));
+        Films[] actual = manager.findAll();
+        System.out.println(Arrays.toString(manager.findAll()));
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     void showEmpty() {
         FilmManager manager = new FilmManager(15);
-        Films[] actual = manager.showAll();
+        Films[] actual = manager.findAll();
         Films[] expected = new Films[]{};
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    void showEmpt1y() {
+    void showEmpty1() {
         FilmManager manager = new FilmManager(-1);
         manager.save(fifth);
         manager.save(sixth);
-        Films[] actual = manager.showAll();
+        Films[] actual = manager.findAll();
         Films[] expected = new Films[]{};
         Assertions.assertArrayEquals(expected, actual);
     }

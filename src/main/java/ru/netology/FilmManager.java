@@ -30,7 +30,7 @@ public class FilmManager {
         return result;
     }
 
-    public Films[] showAllBack() {
+    public Films[] findLast() {
         int length = limit;
         Films[] result = new Films[length];
         for (int i = 0; i < length; i++) {
@@ -40,7 +40,7 @@ public class FilmManager {
         return result;
     }
 
-    public Films[] showAll() {
+    public Films[] findAll() {
         int length = limit;
         if (length >= films.length) {
             length = films.length;
