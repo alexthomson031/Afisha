@@ -41,15 +41,14 @@ public class FilmManager {
     }
 
     public Films[] findAll() {
-        int length = limit;
-        if (length >= films.length) {
-            length = films.length;
-        }
-        if (length < films.length && length > 0) {
-            length = films.length;
-        }
-        if (length < 0) {
+        int length;
+
+        if (limit < 0) {
             return new Films[0];
+        }
+        else {
+            length = limit;
+
         }
         Films[] result = new Films[length];
         for (int i = 0; i < films.length; i++) {
