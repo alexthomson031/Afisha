@@ -81,11 +81,11 @@ public class FilmManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-    // @Test
+     @Test
     void showEmpty() {
-        FilmManager manager = new FilmManager(15);
+        FilmManager manager = new FilmManager(10);
         Films[] actual = manager.findAll();
-        Films[] expected = new Films[]{};
+        Films[] expected = new Films[10];
         Assertions.assertArrayEquals(expected, actual);
     }
 
@@ -96,6 +96,14 @@ public class FilmManagerTest {
         manager.save(sixth);
         Films[] actual = manager.findAll();
         Films[] expected = new Films[]{};
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void showAllLimit() {
+        FilmManager manager = new FilmManager(8);
+        Films[] actual = manager.findAll();
+        Films[] expected = new Films[8];
         Assertions.assertArrayEquals(expected, actual);
     }
 }
