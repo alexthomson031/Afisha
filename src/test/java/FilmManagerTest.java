@@ -106,4 +106,70 @@ public class FilmManagerTest {
         Films[] expected = new Films[8];
         Assertions.assertArrayEquals(expected, actual);
     }
+
+   @Test
+    @DisplayName("Отображаю все фильмы по убыванию id")
+    public void show4SavedFilmsBack() {
+        FilmManager manager = new FilmManager(4);
+       manager.save(first);
+       manager.save(second);
+       manager.save(third);
+       manager.save(fourth);
+       manager.save(fifth);
+       manager.save(sixth);
+       manager.save(seventh);
+       manager.save(eighth);
+       manager.save(ninth);
+       manager.save(tenth);
+       manager.save(eleventh);
+
+        Films[] expected = {eleventh, tenth, ninth, eighth};
+        Films[] actual = manager.findLast();
+        System.out.println(Arrays.toString(manager.findLast()));
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    //@Test
+    @DisplayName("Отображаю все фильмы по убыванию id")
+    public void show12SavedFilmsBack() {
+        FilmManager manager = new FilmManager(12);
+        manager.save(first);
+        manager.save(second);
+        manager.save(third);
+        manager.save(fourth);
+        manager.save(fifth);
+        manager.save(sixth);
+        manager.save(seventh);
+        manager.save(eighth);
+        manager.save(ninth);
+        manager.save(tenth);
+        manager.save(eleventh);
+
+        Films[] expected = {eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first, eleventh};;
+        Films[] actual = manager.findLast();
+        System.out.println(Arrays.toString(manager.findLast()));
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Отображаю все фильмы по убыванию id")
+    public void show11SavedFilmsBack() {
+        FilmManager manager = new FilmManager(11);
+        manager.save(first);
+        manager.save(second);
+        manager.save(third);
+        manager.save(fourth);
+        manager.save(fifth);
+        manager.save(sixth);
+        manager.save(seventh);
+        manager.save(eighth);
+        manager.save(ninth);
+        manager.save(tenth);
+        manager.save(eleventh);
+
+        Films[] expected = {eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};;
+        Films[] actual = manager.findLast();
+        System.out.println(Arrays.toString(manager.findLast()));
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
