@@ -45,8 +45,7 @@ public class FilmManager {
 
         if (limit < 0) {
             return new Films[0];
-        }
-        else {
+        } else {
             length = limit;
 
         }
